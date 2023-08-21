@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Castille</title>
+    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="h-screen bg-gray-custom">
+<div class="block bg-white overflow-hidden">
+    <header class="top-header">
+        <nav class="bg-white header-shadow px-2 lg:px-0" x-data="{openMobile: false}">
+            <div class="mx-auto container px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 justify-between">
+                    <div class="flex">
+                        <div class="flex flex-shrink-0 items-center">
+                            <img class="block h-[29.87px] w-[112px]" src="images/logo.svg" alt="Castille">
+                        </div>
+                        <div class="hidden sm:-my-px sm:ml-6 lg:flex sm:space-x-8">
+                            <a href="#" class="text-black inline-flex items-center text-base font-bold curve-border" aria-current="page">Job Seekers</a>
+                            <a href="#" class="border-transparent text-black hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 px-1 pt-1 text-base">Employers</a>
+                        </div>
+                    </div>
+                    <div class="hidden sm:ml-6 lg:flex sm:items-center sm:justify-between sm:w-1/2">
+                        <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                            <a href="#" class="text-black inline-flex items-center px-1 pt-1 text-base" aria-current="page">Jobs</a>
+                            <a href="#" class="border-transparent text-black hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 px-1 pt-1 text-base">Salaries</a>
+                            <a href="#" class="border-transparent text-black hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 px-1 pt-1 text-base">Insights
+                                <svg class="h-5 w-5 flex-none text-black" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+
+<!--                        search-->
+                        <div class="flex mr-3">
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.6771 12.264C15.6613 10.9872 16.2499 9.41893 16.2499 7.71878C16.2499 3.46279 12.6049 0 8.12495 0C3.64498 0 0 3.46279 0 7.71878C0 11.9748 3.64502 15.4376 8.12498 15.4376C9.91464 15.4376 11.5656 14.8783 12.9095 13.9433L18.2325 19L20 17.3209L14.6771 12.264ZM8.12498 13.0625C5.02318 13.0625 2.50001 10.6655 2.50001 7.71878C2.50001 4.77205 5.02318 2.37503 8.12498 2.37503C11.2268 2.37503 13.75 4.77205 13.75 7.71878C13.75 10.6655 11.2267 13.0625 8.12498 13.0625Z" fill="#1E1D1C"/>
+                            </svg>
+                        </div>
+
+                        <button type="submit" class="custom-btn btn-primary h-[46px]">Sign up for jobs</button>
+
+                        <div class="relative ml-3">
+                            <div>
+                                <a href="#" class="text-base">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="-mr-2 flex items-center lg:hidden">
+                        <div class="flex mr-3">
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.6771 12.264C15.6613 10.9872 16.2499 9.41893 16.2499 7.71878C16.2499 3.46279 12.6049 0 8.12495 0C3.64498 0 0 3.46279 0 7.71878C0 11.9748 3.64502 15.4376 8.12498 15.4376C9.91464 15.4376 11.5656 14.8783 12.9095 13.9433L18.2325 19L20 17.3209L14.6771 12.264ZM8.12498 13.0625C5.02318 13.0625 2.50001 10.6655 2.50001 7.71878C2.50001 4.77205 5.02318 2.37503 8.12498 2.37503C11.2268 2.37503 13.75 4.77205 13.75 7.71878C13.75 10.6655 11.2267 13.0625 8.12498 13.0625Z" fill="#1E1D1C"/>
+                            </svg>
+                        </div>
+                        <!-- Mobile menu button -->
+                        <button type="button" x-on:click="openMobile= !openMobile ? true : false" class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="absolute -inset-0.5"></span>
+                            <span class="sr-only">Open main menu</span>
+                            <!-- Menu open: "hidden", Menu closed: "block" -->
+                            <svg class="block h-8 w-8 text-primary" :class="{'hidden': openMobile, 'visible': !openMobile}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <!-- Menu open: "block", Menu closed: "hidden" -->
+                            <svg class="hidden h-6 w-6" :class="{'hidden': !openMobile, 'visible': openMobile}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="lg:hidden" id="mobile-menu">
+                <div class="space-y-1 pb-3 pt-2 md:pl-8 hidden" :class="{'hidden': !openMobile, 'visible': openMobile}">
+                    <!-- Current: "border-indigo-500 bg-indigo-50 text-indigo-700", Default: "border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800" -->
+                    <a href="#" class="mobile-menu-links border-primary">Job Seekers</a>
+                    <a href="#" class="mobile-menu-links">Employers</a>
+                    <a href="#" class="mobile-menu-links">Salaries</a>
+                    <a href="#" class="mobile-menu-links">Insights</a>
+                </div>
+            </div>
+        </nav>
+        <div class="flex flex-col mx-auto px-6 sm:my-10 container lg:px-8">
+            <div class="flex flex-col sm:flex-row w-full justify-between">
+                <div class="hidden lg:flex slide-left">
+                    <img src="images/header-img-1.png" alt="">
+                </div>
+                <div class="flex-row w-full sm:text-center md:mx-auto items-center lg:w-2/4 md:w-3/4">
+                    <p class="text-primary text-[18px] sm:text-[24px] font-bold my-5">Skills Mapper</p>
+                    <h1 class="text-black text-[32px] lg:text-[48px] md:text-[42px] font-bold leading-[130%] mt-0 sm:mb-10">Your <span class="text-primary">skills guide</span> in the <span class="font-[Merriweather]">evolving world of work.</span></h1>
+                    <p class="text-black text-sm2 font-medium my-5 md:px-10">Get upskilling insights for your next career move or hire, based on <br class="hidden lg:flex" /> popular and trending global skill requirements.</p>
+                </div>
+                <div class="hidden lg:flex slide-right">
+                    <img src="images/header-img-2.png" alt="">
+                </div>
+            </div>
+            <div class="flex-row search-form p-5 sm:p-12 sm:mx-auto mt-10 lg:mt-18">
+                <div class="flex flex-col lg:flex-row lg:items-center sm:justify-between lg:gap-4">
+                    <div class="mb-5 lg:mb-0">
+                        <label for="location" class="block text-sm font-medium leading-6 text-black flex items-center gap-2">
+                            <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.681818 0C0.30526 0 0 0.329895 0 0.736842V10.3158C0 10.7227 0.30526 11.0526 0.681818 11.0526H6.81818V12.5263H3.40909C3.03253 12.5263 2.72727 12.8562 2.72727 13.2632C2.72727 13.6701 3.03253 14 3.40909 14H11.5909C11.9675 14 12.2727 13.6701 12.2727 13.2632C12.2727 12.8562 11.9675 12.5263 11.5909 12.5263H8.18182V11.0526H14.3182C14.6947 11.0526 15 10.7227 15 10.3158V0.736842C15 0.329895 14.6947 0 14.3182 0H0.681818ZM5.45455 6.26316C5.45455 5.85621 5.14928 5.52632 4.77273 5.52632C4.39617 5.52632 4.09091 5.85621 4.09091 6.26316V7.73684C4.09091 8.14379 4.39617 8.47368 4.77273 8.47368C5.14928 8.47368 5.45455 8.14379 5.45455 7.73684V6.26316ZM7.5 4.05263C7.87656 4.05263 8.18182 4.38253 8.18182 4.78947V7.73684C8.18182 8.14379 7.87656 8.47368 7.5 8.47368C7.12344 8.47368 6.81818 8.14379 6.81818 7.73684V4.78947C6.81818 4.38253 7.12344 4.05263 7.5 4.05263ZM10.9091 3.31579C10.9091 2.90884 10.6038 2.57895 10.2273 2.57895C9.85071 2.57895 9.54545 2.90884 9.54545 3.31579V7.73684C9.54545 8.14379 9.85071 8.47368 10.2273 8.47368C10.6038 8.47368 10.9091 8.14379 10.9091 7.73684V3.31579Z" fill="#4D4D4D"/>
+                            </svg> Job Title</label>
+                        <input type="text" name="email" class="mt-3 block w-full rounded-md border-0 p-5 lg:w-[290px] h-[50px] text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 placeholder:light-gray2" placeholder="Search a job title">
+                    </div>
+                    <div class="mb-5 lg:mb-0">
+                        <label for="location" class="block text-sm font-medium leading-6 text-black flex items-center gap-2">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.9091 0.75C10.9091 0.335786 11.2347 0 11.6364 0H13.8182C14.2198 0 14.5455 0.335786 14.5455 0.75V13.5H15.2727C15.6744 13.5 16 13.8358 16 14.25C16 14.6642 15.6744 15 15.2727 15H0.727273C0.325611 15 0 14.6642 0 14.25C0 13.8358 0.325611 13.5 0.727273 13.5H1.45455V9C1.45455 8.58579 1.78016 8.25 2.18182 8.25H4.36364C4.7653 8.25 5.09091 8.58579 5.09091 9V13.5H6.18182V5.25C6.18182 4.83579 6.50743 4.5 6.90909 4.5H9.09091C9.49257 4.5 9.81818 4.83579 9.81818 5.25V13.5H10.9091V0.75Z" fill="#4D4D4D"/>
+                            </svg>
+                            Seniority
+                        </label>
+                        <select id="location" name="location" class="text-light-gray2 mt-3 p-5 lg:w-[290px] h-[50px] block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <option>United States</option>
+                            <option selected>Canada</option>
+                            <option>Mexico</option>
+                        </select>
+                    </div>
+                    <div class="mb-5 lg:mb-0">
+                        <label for="location" class="block text-sm font-medium leading-6 text-black flex items-center gap-2">
+                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.00508 0.209209C7.72613 -0.0697365 7.27387 -0.0697365 6.99492 0.209209L4.49492 2.70921C4.21598 2.98816 4.21598 3.44042 4.49492 3.71936L6.99492 6.21936C7.27387 6.49831 7.72613 6.49831 8.00508 6.21936L10.5051 3.71936C10.784 3.44042 10.784 2.98816 10.5051 2.70921L8.00508 0.209209Z" fill="#4D4D4D"/>
+                                <path d="M8.00508 8.78064C7.72613 8.50169 7.27387 8.50169 6.99492 8.78064L4.49492 11.2806C4.21598 11.5596 4.21598 12.0118 4.49492 12.2908L6.99492 14.7908C7.27387 15.0697 7.72613 15.0697 8.00508 14.7908L10.5051 12.2908C10.784 12.0118 10.784 11.5596 10.5051 11.2806L8.00508 8.78064Z" fill="#4D4D4D"/>
+                                <path d="M12.2908 4.49492C12.0118 4.21598 11.5596 4.21598 11.2806 4.49492L8.78064 6.99492C8.50169 7.27387 8.50169 7.72613 8.78064 8.00508L11.2806 10.5051C11.5596 10.784 12.0118 10.784 12.2908 10.5051L14.7908 8.00508C15.0697 7.72613 15.0697 7.27387 14.7908 6.99492L12.2908 4.49492Z" fill="#4D4D4D"/>
+                                <path d="M3.71936 4.49492C3.44042 4.21598 2.98816 4.21598 2.70921 4.49492L0.209209 6.99492C-0.0697365 7.27387 -0.0697365 7.72613 0.209209 8.00508L2.70921 10.5051C2.98816 10.784 3.44042 10.784 3.71936 10.5051L6.21936 8.00508C6.49831 7.72613 6.49831 7.27387 6.21936 6.99492L3.71936 4.49492Z" fill="#4D4D4D"/>
+                            </svg>
+                            Sector</label>
+                        <select name="location" class="text-light-gray2 mt-3 p-5 lg:w-[290px] h-[50px] block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <option>United States</option>
+                            <option selected>Canada</option>
+                            <option>Mexico</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="custom-btn inline-flex items-center justify-center lg:w-[110px] rounded-md px-3 py-2 btn-black text-base font-semibold sm:mt-9">Search</button>
+                </div>
+                <p class="flex items-center gap-2 border-t-2 border-[#F6F6F6] mt-6 pt-5 lg:border-0 lg:pt-0  "> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.0277 1C8.51095 1.00063 8.90219 1.3929 8.90156 1.87615L8.89468 7.125H14.125C14.6082 7.125 15 7.51675 15 8C15 8.48325 14.6082 8.875 14.125 8.875H8.89238L8.8855 14.1261C8.88487 14.6094 8.4926 15.0006 8.00935 15C7.5261 14.9994 7.13487 14.6071 7.1355 14.1239L7.14238 8.875H1.875C1.39175 8.875 1 8.48325 1 8C1 7.51675 1.39175 7.125 1.875 7.125H7.14467L7.15156 1.87385C7.15219 1.3906 7.54445 0.999367 8.0277 1Z" fill="#C4C4C4" stroke="#C4C4C4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg> <span class="text-[#C4C4C4] text-sm font-medium">Add another</span></p>
+            </div>
+        </div>
+
+    </header>
+    <section class="flex w-full relative bg-gray-custom">
+        <div class="flex w-full lg:px-4 sm:px-6 lg:px-8 container mx-auto mt-8 lg:mt-0 mb-10">
+            <div class="flex-row px-6 sm:px-0 w-full mt-5  lg:mt-0">
+                <div class="job-card">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <div class="flex flex-row flex-shrink-0 pl-2 mt-2 gap-2">
+                                    <img class="w-[83.557px] h-[86.168px] rounded-full bg-[#F9DDA4]" src="images/user.png" alt="">
+                                    <div class="flex flex-col mt-4 ml-3">
+                                        <p class="text-[22px] text-black font-bold">Sergio Alvarez</p>
+                                        <p class="text-base text-light-gray">Backend Engineer</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row items-center pl-2 mb-4 sm:mb-0 sm:pl-0 gap-4 sm:mt-[-10px]">
+                                    <p><img src="images/rating.svg" alt=""></p>
+                                    <p class="text-[18px] text-black font-bold">3.6</p>
+                                </div>
+                                <span class="success-badge hidden sm:flex">Deployed</span>
+                            </div>
+                            <div class="sm:ml-24 pl-1.5 sm:pl-4">
+                                <div class="flex flex-row flex-wrap sm:flex-nowrap mb-5 gap-3">
+                                    <span class="badge">CI/CD</span>
+                                    <span class="badge">Python</span>
+                                    <span class="badge">Kubernetes</span>
+                                    <span class="badge">GraphQL</span>
+                                    <span class="badge">REST</span>
+                                    <span class="badge w-12">Go</span>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:flex-nowrap text-[12px] gap-2">
+                                    <p class="font-medium text-light-gray">Service History <span class="font-semibold text-black">04 May 2022 - Ongoing</span></p>
+                                    <p class="font-medium text-light-gray">Reviews Received <span class="font-semibold text-black">3</span></p>
+                                </div>
+                                <span class="success-badge flex sm:hidden ml-0 mt-7 mb-8">Deployed</span>
+                                <div class="flex flex-col sm:flex-row gap-4 mt-5">
+                                    <button type="button" class="custom-btn btn-primary">Approve review</button>
+                                    <button type="button" class="custom-btn btn-default">View full profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
